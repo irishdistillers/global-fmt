@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<ruleset name="WP Coding standard">
+    <rule ref="WordPress">
+        <exclude name="Squiz.Commenting.FunctionComment.Missing"/>
+        <exclude name="Squiz.Commenting.FileComment.Missing" />
+        <exclude name="Squiz.Commenting.FunctionComment.MissingParamComment"/>
+        <exclude name="Squiz.Commenting.FunctionComment.ParamCommentFullStop"/>
+        <exclude name="Generic.Commenting.DocComment.MissingShort"/>
+    </rule>
+
+    <file>./web/wp-content/themes/global-theme</file>
+
+    <arg name="extensions" value="php"/>
+</ruleset>
