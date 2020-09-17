@@ -5,7 +5,7 @@
   "license": "proprietary",
   "autoload" : {
     "psr-4": {
-      "global-fmt\\": "./"
+      "GlobalFmt\\": "src/"
     }
   },
   "require-dev": {
@@ -19,6 +19,9 @@
     ]
   },
   "require": {
-    "squizlabs/php_codesniffer": "^3.5"
+    "squizlabs/php_codesniffer": "^3.5",
+    "symfony/filesystem": "^5.1",
+    "symfony/finder": "^5.1",
+    "symfony/console": "^5.1"
   }
 }
