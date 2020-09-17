@@ -22,10 +22,8 @@ Adds the folllowing to your project composer.json
     ....
 	"scripts": {
 		....
-		"global-fmt": [
-			"./vendor/irishdistillers/global-fmt/src/check"
-			"./vendor/irishdistillers/global-fmt/src/install"
-		],
+		"global-fmt-check": "php ./vendor/irishdistillers/global-fmt/application.php check",
+		"global-fmt-copy": "php ./vendor/irishdistillers/global-fmt/application.php copy"
         ....
 	}
 }
