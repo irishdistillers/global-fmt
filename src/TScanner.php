@@ -23,7 +23,7 @@ trait TScanner
         return $this->scannedFiles;
     }
 
-    private function retrievesDirFromFiles(): void
+    private function retrievesScannedFiles(): void
     {
         $finder = new Finder();
         $finder->in($this->dirFrom)->files()->ignoreDotFiles(false);
@@ -34,15 +34,18 @@ trait TScanner
         }
     }
 
-    private function comparesAllDirFiles(): void
+    private function retrievesFlaggedFiles(): void
     {
-        foreach ($this->scannedFiles as $hash => $scannedFile) {
-            $finder = new Finder();
-            $finder->ignoreDotFiles(false);
-            $finder->in($this->dirTo)->files();
-            $finder->name($scannedFile['file']->getFilename());
+        $finder = new Finder();
+        // $limit = new \LimitIterator($finder->getIterator(), 0, 1);
 
-            foreach ($finder as $file) {
+        foreach ($this->scannedFiles as $hash => $scannedFile) {
+
+            $finder->ignoreDotFiles(false);
+            $finder->name($scannedFile['file']->getFilename());
+            $finder->in($this->dirTo)->files();
+
+            foreach (new \LimitIterator($finder->getIterator(), 0, 1) as $file) {
                 $hash = $this->getHashFile($file->getRealPath());
                 $this->flaggedFiles[$hash]['file'] = $file;
 

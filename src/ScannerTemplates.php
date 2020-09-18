@@ -27,7 +27,7 @@ final class ScannerTemplates implements IScanner
 
     public function scan(): void
     {
-        $this->retrievesDirFromFiles();
-        $this->comparesAllDirFiles();
+        $this->retrievesScannedFiles();
+        $this->retrievesFlaggedFiles();
     }
 }

@@ -22,8 +22,9 @@ Adds the folllowing to your project composer.json
     ....
 	"scripts": {
 		....
-		"global-fmt-check": "php ./vendor/irishdistillers/global-fmt/application.php check",
-		"global-fmt-copy": "php ./vendor/irishdistillers/global-fmt/application.php copy"
+		"global-fmt": [
+			"DIR=$(pwd); php ./vendor/irishdistillers/global-fmt/application.php scan $DIR",
+		]
         ....
 	}
 }

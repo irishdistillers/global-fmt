@@ -4,13 +4,11 @@
 
 require __DIR__.'/vendor/autoload.php';
 
-use GlobalFmt\Command\CheckCommand;
-use GlobalFmt\Command\CopyCommand;
+use GlobalFmt\Command\ScanCommand;
 use Symfony\Component\Console\Application;
 
 $application = new Application();
 
-$application->add(new CheckCommand());
-$application->add(new CopyCommand());
+$application->add(new ScanCommand());
 
 $application->run();
