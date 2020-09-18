@@ -26,8 +26,9 @@ trait TScanner
     private function retrievesDirFromFiles(): void
     {
         $finder = new Finder();
+        $finder->in($this->dirFrom)->files()->ignoreDotFiles(false);
 
-        foreach ($finder->in($this->dirFrom)->files() as $file) {
+        foreach ($finder as $file) {
             $hash = $this->getHashFile($file->getRealPath());
             $this->scannedFiles[$hash]['file'] = $file;
         }
@@ -37,7 +38,11 @@ trait TScanner
     {
         foreach ($this->scannedFiles as $hash => $scannedFile) {
             $finder = new Finder();
-            foreach ($finder->in($this->dirTo)->files()->name($scannedFile['file']->getFilename()) as $file) {
+            $finder->ignoreDotFiles(false);
+            $finder->in($this->dirTo)->files();
+            $finder->name($scannedFile['file']->getFilename());
+
+            foreach ($finder as $file) {
                 $hash = $this->getHashFile($file->getRealPath());
                 $this->flaggedFiles[$hash]['file'] = $file;
 
