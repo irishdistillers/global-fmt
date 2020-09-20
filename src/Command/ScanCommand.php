@@ -12,7 +12,7 @@ class ScanCommand extends Command
 {
     protected static $defaultName = 'scan';
 
-    protected function configure()
+    protected function configure(): void
     {
         $this
             ->setDescription('Check if the monitored files have changed')
@@ -23,10 +23,11 @@ class ScanCommand extends Command
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $this->scanner = new ScannerTemplates();
-        $this->scanner->setDirFrom(__DIR__ . '/../../templates');
-        $this->scanner->setDirTo($input->getArgument('project_dir'));
-        $this->scanner->scan();
+        $scanner = new ScannerTemplates();
+        $scanner->setDirFrom(__DIR__ . '/../../templates');
+        // @phpstan-ignore-next-line
+        $scanner->setDirTo($input->getArgument('project_dir'));
+        $scanner->scan();
 
 
         // $files = $this->scanner->getFlaggedFiles();

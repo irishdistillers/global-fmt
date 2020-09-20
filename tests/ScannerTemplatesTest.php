@@ -9,6 +9,9 @@ use Symfony\Component\Finder\SplFileInfo;
 
 final class ScannerTemplatesTest extends TestCase
 {
+    /**
+     * @var GlobalFmt\ScannerTemplates
+     */
     protected $scanner;
 
     protected function setUp(): void
@@ -69,12 +72,12 @@ final class ScannerTemplatesTest extends TestCase
 
         $this->assertEquals(
             $files['88acd44838c14a25591df9e28d2e5ff8']['status'],
-            'ok'
+            ScannerStatus::getStatusOk()
         );
 
         $this->assertEquals(
             $files['10400c6faf166902b52fb97042f1e0eb']['status'],
-            'missing'
+            ScannerStatus::getStatusMissing()
         );
     }
 }

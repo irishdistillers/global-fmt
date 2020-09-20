@@ -11,11 +11,27 @@ use Symfony\Component\Finder\Finder;
 
 trait TScanner
 {
+    /**
+     * @var array<array>
+     */
+    protected $scannedFiles;
+
+    /**
+     * @var array<array>
+     */
+    protected $flaggedFiles;
+
+    /**
+     * @return array<array>
+     */
     public function getFlaggedFiles(): array
     {
         return $this->flaggedFiles;
     }
 
+    /**
+     * @return array<array>
+     */
     public function getScannedFiles(): array
     {
         return $this->scannedFiles;
@@ -27,7 +43,7 @@ trait TScanner
         $finder->in($this->dirFrom)->files()->ignoreDotFiles(false);
 
         foreach ($finder as $file) {
-            $hash = $this->getHashFile($file->getRealPath());
+            $hash = $this->getHashFile((string) $file->getRealPath());
             $this->scannedFiles[$hash]['file'] = $file;
         }
     }
@@ -68,6 +84,6 @@ trait TScanner
         if (!file_exists($filename)) {
             return (string)0;
         }
-        return hash_file($algo, $filename);
+        return (string)hash_file($algo, $filename);
     }
 }

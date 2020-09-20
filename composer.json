@@ -14,8 +14,9 @@
   },
   "scripts": {
     "test": [
-      "vendor/bin/phpcs",
-      "vendor/bin/phpstan analyse"
+      "./vendor/bin/phpunit",
+      "./vendor/bin/phpcs .",
+      "./vendor/bin/phpstan analyse"
     ]
   },
   "require": {
