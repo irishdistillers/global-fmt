@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 use PHPUnit\Framework\TestCase;
 use GlobalFmt\ScannerTemplates;
+use GlobalFmt\ScannerStatus;
 use Symfony\Component\Finder\SplFileInfo;
 
 final class ScannerTemplatesTest extends TestCase
@@ -22,10 +23,10 @@ final class ScannerTemplatesTest extends TestCase
     {
         $files = $this->scanner->getFlaggedFiles();
 
-        foreach($files as $file) {
+        foreach ($files as $file) {
             $this->assertContainsOnlyInstancesOf(
                 SplFileInfo::class,
-                [ $file['file'] ]
+                [$file['file']]
             );
         }
     }
@@ -34,10 +35,10 @@ final class ScannerTemplatesTest extends TestCase
     {
         $files = $this->scanner->getScannedFiles();
 
-        foreach($files as $file) {
+        foreach ($files as $file) {
             $this->assertContainsOnlyInstancesOf(
                 SplFileInfo::class,
-                [ $file['file'] ]
+                [$file['file']]
             );
         }
     }
@@ -52,13 +53,28 @@ final class ScannerTemplatesTest extends TestCase
         );
     }
 
-    public function testScanFlaggedIllegalItems(): void
+    public function testScanFlaggedAllItems(): void
     {
         $files = $this->scanner->getFlaggedFiles();
 
         $this->assertCount(
-            1,
+            2,
             $files
+        );
+    }
+
+    public function testCheckFlaggedItemsStatus(): void
+    {
+        $files = $this->scanner->getFlaggedFiles();
+
+        $this->assertEquals(
+            $files['88acd44838c14a25591df9e28d2e5ff8']['status'],
+            'ok'
+        );
+
+        $this->assertEquals(
+            $files['10400c6faf166902b52fb97042f1e0eb']['status'],
+            'missing'
         );
     }
 }
