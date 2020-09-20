@@ -17,8 +17,7 @@ class ScanCommand extends Command
         $this
             ->setDescription('Check if the monitored files have changed')
             ->setHelp('Scan your site and check if you have modified files that you should contribute back')
-            ->addArgument('project_dir', InputArgument::REQUIRED, 'The project dir')
-        ;
+            ->addArgument('project_dir', InputArgument::REQUIRED, 'The project dir');
     }
 
     protected function execute(InputInterface $input, OutputInterface $output)
@@ -29,41 +28,12 @@ class ScanCommand extends Command
         $scanner->setDirTo($input->getArgument('project_dir'));
         $scanner->scan();
 
-
-        // $files = $this->scanner->getFlaggedFiles();
-        // foreach($files as $file) {
-        //     $output->writeln(hash_file('md5', $file['file']->getRealPath()));
-        //     $output->writeln($file['file']->getRealPath());
-        // }
-
-        // $output->writeln("======");
-
-        // $files = $this->scanner->getScannedFiles();
-        // foreach($files as $file) {
-        //     $output->writeln(hash_file('md5', $file['file']->getRealPath()));
-        //     $output->writeln($file['file']->getRealPath());
-        // }
-
-
-
-        // $output->writeln([
-        //     'System check',
-        //     '============',
-        //     __DIR__,
-        //     basename(__DIR__),
-        //     dirname(__FILE__)
-        // ]);
-
-
-
-
-        // $output->writeln([
-        //     'System check',
-        //     '============',
-        //     '',
-        // ]);
-
-        // do some checking
+        $files = $scanner->getFlaggedFiles();
+        foreach ($files as $file) {
+            $display = "[ " . strtoupper($file['status']) ." ] ";
+            $display .= $file['file']->getRealPath();
+            $output->writeln($display);
+        }
 
         return Command::SUCCESS;
     }
