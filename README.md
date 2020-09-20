@@ -1,6 +1,9 @@
 # global-fmt
-Adds the necessary files to your GCMS project for the code to be "prettier" #cleanCode
+Check that all the files in /templates are in /destination.
+Track if files in /destination have changed.
 
+This project helps if you have multiple sites that use the same files (that can be locally changed). 
+This project helps to flag the files that need to be kept in sync with centralised repository.
 
 ## Installation
 Adds the folllowing to your project composer.json
