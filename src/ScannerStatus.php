@@ -15,6 +15,14 @@ final class ScannerStatus
         "OK" => "ok"
     ];
 
+    /**
+     * @return array<string>
+     */
+    public static function getAll(): array
+    {
+        return array_values(self::$status);
+    }
+
     public static function getStatusMissing(): string
     {
         return self::$status['MISSING'];

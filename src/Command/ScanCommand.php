@@ -3,6 +3,7 @@
 namespace GlobalFmt\Command;
 
 use GlobalFmt\ScannerTemplates;
+use GlobalFmt\ScannerStatus;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
@@ -35,7 +36,15 @@ class ScanCommand extends Command
                 InputOption::VALUE_REQUIRED,
                 'Directory path to watch for changes?',
                 1
-            );
+            )
+            ->addOption(
+                'show',
+                null,
+                InputOption::VALUE_OPTIONAL,
+                'Show all results by default or specific status (ok,different,missing)?',
+                ''
+            )
+        ;
     }
 
     protected function execute(InputInterface $input, OutputInterface $output)
@@ -49,11 +58,16 @@ class ScanCommand extends Command
         $scanner->setDirTo($input->getOption('dir_to'));
         $scanner->scan();
 
+        // @phpstan-ignore-next-line
+        $onlyShowList = $this->getShowStatus($input->getOption('show'));
+
         $files = $scanner->getFlaggedFiles();
         foreach ($files as $file) {
-            $display = "[ " . strtoupper($file['status']) . " ] ";
-            $display .= $file['file']->getRealPath();
-            $output->writeln($display);
+            if (in_array($file['status'], $onlyShowList)) {
+                $display = "[ " . strtoupper($file['status']) . " ] ";
+                $display .= $file['file']->getRealPath();
+                $output->writeln($display);
+            }
         }
 
         return Command::SUCCESS;
@@ -68,5 +82,17 @@ class ScanCommand extends Command
         }
 
         return (string)realpath(self::$templatesDir . '/default');
+    }
+
+    /**
+     * @return array<string>
+     */
+    private function getShowStatus(string $option): array
+    {
+        if (!empty($option)) {
+            return explode(',', $option);
+        }
+
+        return ScannerStatus::getAll();
     }
 }
