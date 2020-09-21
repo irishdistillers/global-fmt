@@ -8,6 +8,13 @@ This project helps to flag the files that need to be kept in sync with centralis
 ## Installation
 Adds the folllowing to your project composer.json
 
+```
+[ DIFFERENT ] /templates/phpunit.xml
+[ OK ] /templates/phpstan.neon
+[ OK ] /templates/.editorconfig
+[ MISSING ] /templates/phpcs.xml
+```
+
 ```json
 {
 	...
@@ -26,7 +33,7 @@ Adds the folllowing to your project composer.json
 	"scripts": {
 		....
 		"global-fmt": [
-			"DIR=$(pwd); php ./vendor/irishdistillers/global-fmt/application.php scan $DIR",
+			"DIR=$(pwd); php ./vendor/irishdistillers/global-fmt/application.php scan --dir_from=default --dir_to=$DIR"
 		]
         ....
 	}
