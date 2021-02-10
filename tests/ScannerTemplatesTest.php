@@ -70,14 +70,19 @@ final class ScannerTemplatesTest extends TestCase
     {
         $files = $this->scanner->getFlaggedFiles();
 
-        $this->assertEquals(
-            $files['88acd44838c14a25591df9e28d2e5ff8']['status'],
-            ScannerStatus::getStatusOk()
-        );
+        foreach($files as $file) {
+            if($file['file']->getFilename() == '.file2.txt') {
+                $this->assertEquals(
+                    $file['status'],
+                    ScannerStatus::getStatusMissing()
+                );
+            } elseif($file['file']->getFilename() == 'file1.php') {
+                $this->assertEquals(
+                    $file['status'],
+                    ScannerStatus::getStatusOk()
+                );
+            }
 
-        $this->assertEquals(
-            $files['10400c6faf166902b52fb97042f1e0eb']['status'],
-            ScannerStatus::getStatusMissing()
-        );
+        }
     }
 }

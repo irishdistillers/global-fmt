@@ -6,6 +6,7 @@ This project helps if you have multiple sites that use the same files (that can 
 This project helps to flag the files that need to be kept in sync with centralised repository.
 
 ## Installation
+
 Adds the folllowing to your project composer.json
 
 ```json
@@ -32,6 +33,10 @@ Adds the folllowing to your project composer.json
 	}
 }
 ```
+
+## Ignore a file 
+
+To ignore a file simply add it to the {TEMPLATES_DIR}/.gitignore 
 
 ## Report
 
