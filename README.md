@@ -28,7 +28,7 @@ Adds the folllowing to your project composer.json
 	"scripts": {
 		....
 		"global-fmt": [
-			"php ./vendor/irishdistillers/global-fmt/application.php scan --dir_from=default --dir_to=`pwd` --show=different,ok,missing"
+			"./bin/global-fmt scan --dir_from=wordpress --dir_to=`pwd` --show=different,ok,missing"
 		]
         ....
 	}
@@ -37,6 +37,7 @@ Adds the folllowing to your project composer.json
 
 ## Ignore a file 
 
+You can ignore system file like .DS_Store (or any other annoying files).
 To ignore a file simply add it to the {TEMPLATE_DIR}/.gitgnore 
 
 ## Report
@@ -45,7 +46,7 @@ Here is how a report looks like
 
 ```bash
 
-> php ./vendor/irishdistillers/global-fmt/application.php scan --dir_from=wordpress --dir_to=`pwd` --show=different,ok,missing
+> ./bin/global-fmt scan --dir_from=wordpress --dir_to=`pwd` --show=different,ok,missing
 
 
 [ OK ] /Volumes/shakushaku/Projects/vendors/global-fmt/templates/wordpress/.editorconfig
@@ -63,7 +64,7 @@ Here is how a report looks like
 [ MISSING ] 0
 [ DIFFERENT ] 1
 [ OK ] 6
-Script php ./vendor/irishdistillers/global-fmt/application.php scan --dir_from=wordpress --dir_to=`pwd` --show=different,ok,missing handling the code-sniff event returned with error code 1
+Script ./bin/global-fmt scan --dir_from=wordpress --dir_to=`pwd` --show=different,ok,missing handling the code-sniff event returned with error code 1
 ```
 
 The report is telling us that our current folder has 1 file which differ from the template files. 
