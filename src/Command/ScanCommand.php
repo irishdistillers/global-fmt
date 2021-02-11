@@ -58,19 +58,61 @@ class ScanCommand extends Command
         $scanner->setDirTo($input->getOption('dir_to'));
         $scanner->scan();
 
+        $output->writeln(PHP_EOL);
+
         // @phpstan-ignore-next-line
         $onlyShowList = $this->getShowStatus($input->getOption('show'));
+
+        $anomalyCounter = $this->getAnomalyCounter();
 
         $files = $scanner->getFlaggedFiles();
         foreach ($files as $file) {
             if (in_array($file['status'], $onlyShowList)) {
+
+                if(isset($anomalyCounter[$file['status']])) {
+                    $anomalyCounter[$file['status']]++;
+                }
+
                 $display = "[ " . strtoupper($file['status']) . " ] ";
                 $display .= $file['file']->getRealPath();
                 $output->writeln($display);
             }
         }
 
+        $this->displayTotalResult(
+            $output,
+            $anomalyCounter
+        );
+
+        if($anomalyCounter[ScannerStatus::getStatusMissing()] > 0 ||
+            $anomalyCounter[ScannerStatus::getStatusDifferent()] > 0) {
+            return Command::FAILURE;
+        }
+
         return Command::SUCCESS;
+    }
+
+    private function displayTotalResult(OutputInterface $output, array $data): void
+    {
+        $output->writeln(PHP_EOL);
+        $output->writeln(str_repeat("-=", 20));
+        $output->writeln(" RESULT " . PHP_EOL);
+
+        foreach ($data as $item => $content) {
+            $display = "[ " . strtoupper($item) . " ] ";
+            $display .= $content;
+            $output->writeln($display);
+        }
+    }
+
+    private function getAnomalyCounter() 
+    {
+        $data = [];
+        foreach(ScannerStatus::getAll() as $item) {
+            $data[$item] = 0;
+        }
+
+        return $data;
     }
 
     private function getProjectName(string $projectName): string

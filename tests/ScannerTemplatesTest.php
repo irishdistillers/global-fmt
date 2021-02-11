@@ -34,7 +34,7 @@ final class ScannerTemplatesTest extends TestCase
         }
     }
 
-    public function testScannedFilesAreSplInfoObjects(): void
+    public function testScannedFilesAreSplInfoObjects()
     {
         $files = $this->scanner->getScannedFiles();
 
