@@ -1,0 +1,13 @@
+parameters:
+    level: max
+    scanDirectories:
+        - %currentWorkingDirectory%/vendor
+        - %currentWorkingDirectory%/web
+    paths:
+        - %currentWorkingDirectory%/web/wp-content/themes/global-theme
+    reportUnmatchedIgnoredErrors: false
+    ignoreErrors:
+        - '#Function __ invoked with 1 parameter, 0 required.#'
+        - '#Function __ invoked with 2 parameters, 0 required.#'
+    scanFiles:
+        - %currentWorkingDirectory%/web/wp-config.php
