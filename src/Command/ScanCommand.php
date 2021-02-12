@@ -83,7 +83,8 @@ class ScanCommand extends Command
 
         $this->displayTotalResult(
             $output,
-            $anomalyCounter
+            $anomalyCounter,
+            $onlyShowList
         );
 
         if ($anomalyCounter[ScannerStatus::getStatusMissing()] > 0 ||
@@ -96,17 +97,23 @@ class ScanCommand extends Command
 
     /**
     * @param array<string, int> $data
+    * @param array<string> $onlyShowList
     */
-    private function displayTotalResult(OutputInterface $output, array $data): void
-    {
+    private function displayTotalResult(
+        OutputInterface $output,
+        array $data,
+        array $onlyShowList
+    ): void {
         $output->writeln(PHP_EOL);
         $output->writeln(str_repeat("=", 40));
         $output->writeln(" RESULT " . PHP_EOL);
 
-        foreach ($data as $item => $content) {
-            $display = "[ " . strtoupper($item) . " ] ";
-            $display .= $content;
-            $output->writeln($display);
+        foreach ($data as $status => $content) {
+            if (in_array($status, $onlyShowList)) {
+                $display = "[ " . strtoupper($status) . " ] ";
+                $display .= $content;
+                $output->writeln($display);
+            }
         }
 
         $output->writeln(PHP_EOL);

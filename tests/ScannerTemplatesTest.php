@@ -11,7 +11,7 @@ use Symfony\Component\Finder\SplFileInfo;
 final class ScannerTemplatesTest extends TestCase
 {
     /**
-     * @var GlobalTemplateschecker\ScannerTemplates
+     * @var Templateschecker\ScannerTemplates
      */
     protected $scanner;
 
@@ -49,8 +49,8 @@ final class ScannerTemplatesTest extends TestCase
         }
     }
 
-    private function retrievesFixtures() {
-
+    private function retrievesFixtures(): Finder
+    {
         $finder = new Finder();
         $finder->in(self::FIXTURES_PATH)
             ->files()
