@@ -1,14 +1,14 @@
 {
-  "name": "irishdistillers/global-fmt",
-  "description": "Adds the necessary files to your GCMS project for the code to be 'prettier' #cleanCode",
+  "name": "irishdistillers/global-templateschecker",
+  "description": " #cleanCode",
   "type": "library",
   "license": "proprietary",
   "autoload" : {
     "psr-4": {
-      "GlobalFmt\\": "src/"
+      "GlobalTemplateschecker\\": "src/"
     }
   },
-  "bin": ["bin/global-fmt"],
+  "bin": ["bin/global-templateschecker"],
   "require-dev": {
     "phpunit/phpunit": "^9.2",
     "phpstan/phpstan": "^0.12.32"
@@ -17,7 +17,7 @@
     "test": [
       "./vendor/bin/phpunit",
       "./vendor/bin/phpcs .",
-      "./vendor/bin/phpstan analyse"
+      "./vendor/bin/phpstan analyse  --no-progress  --memory-limit=60"
     ]
   },
   "require": {

@@ -1,6 +1,6 @@
 <?php
 
-namespace GlobalFmt;
+namespace GlobalTemplateschecker;
 
 interface IScanner
 {

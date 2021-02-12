@@ -3,14 +3,14 @@
 declare(strict_types=1);
 
 use PHPUnit\Framework\TestCase;
-use GlobalFmt\ScannerTemplates;
-use GlobalFmt\ScannerStatus;
+use GlobalTemplateschecker\ScannerTemplates;
+use GlobalTemplateschecker\ScannerStatus;
 use Symfony\Component\Finder\SplFileInfo;
 
 final class ScannerTemplatesTest extends TestCase
 {
     /**
-     * @var GlobalFmt\ScannerTemplates
+     * @var GlobalTemplateschecker\ScannerTemplates
      */
     protected $scanner;
 
@@ -34,7 +34,7 @@ final class ScannerTemplatesTest extends TestCase
         }
     }
 
-    public function testScannedFilesAreSplInfoObjects()
+    public function testScannedFilesAreSplInfoObjects(): void
     {
         $files = $this->scanner->getScannedFiles();
 

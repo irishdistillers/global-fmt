@@ -1,4 +1,4 @@
-# global-fmt
+# global-templateschecker
 
 ## Why ? 
 
@@ -22,13 +22,13 @@ Adds the folllowing to your project composer.json
 		....
 	],
 	"require": {
-		"irishdistillers/global-fmt": "^SOME_VERSION",
+		"irishdistillers/global-templateschecker": "^SOME_VERSION",
 	},
     ....
 	"scripts": {
 		....
-		"global-fmt": [
-			"./bin/global-fmt scan --dir_from=wordpress --dir_to=`pwd` --show=different,ok,missing"
+		"global-templateschecker": [
+			"./bin/global-templateschecker scan --dir_from=wordpress --dir_to=`pwd` --show=different,ok,missing"
 		]
         ....
 	}
@@ -46,16 +46,16 @@ Here is how a report looks like
 
 ```bash
 
-> ./bin/global-fmt scan --dir_from=wordpress --dir_to=`pwd` --show=different,ok,missing
+> ./bin/global-templateschecker scan --dir_from=wordpress --dir_to=`pwd` --show=different,ok,missing
 
 
-[ OK ] /Volumes/shakushaku/Projects/vendors/global-fmt/templates/wordpress/.editorconfig
-[ OK ] /Volumes/shakushaku/Projects/vendors/global-fmt/templates/wordpress/phpcs.xml
-[ OK ] /Volumes/shakushaku/Projects/vendors/global-fmt/templates/wordpress/phpstan.neon
-[ OK ] /Volumes/shakushaku/Projects/vendors/global-fmt/templates/wordpress/phpunit.xml
-[ OK ] /Volumes/shakushaku/Projects/vendors/global-fmt/templates/wordpress/postcss.config.js
-[ DIFFERENT ] /Volumes/shakushaku/Projects/vendors/global-fmt/templates/wordpress/README.md
-[ OK ] /Volumes/shakushaku/Projects/vendors/global-fmt/templates/wordpress/wp-cli.yml
+[ OK ] /Volumes/shakushaku/Projects/vendors/global-templateschecker/templates/wordpress/.editorconfig
+[ OK ] /Volumes/shakushaku/Projects/vendors/global-templateschecker/templates/wordpress/phpcs.xml
+[ OK ] /Volumes/shakushaku/Projects/vendors/global-templateschecker/templates/wordpress/phpstan.neon
+[ OK ] /Volumes/shakushaku/Projects/vendors/global-templateschecker/templates/wordpress/phpunit.xml
+[ OK ] /Volumes/shakushaku/Projects/vendors/global-templateschecker/templates/wordpress/postcss.config.js
+[ DIFFERENT ] /Volumes/shakushaku/Projects/vendors/global-templateschecker/templates/wordpress/README.md
+[ OK ] /Volumes/shakushaku/Projects/vendors/global-templateschecker/templates/wordpress/wp-cli.yml
 
 
 -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
@@ -64,7 +64,7 @@ Here is how a report looks like
 [ MISSING ] 0
 [ DIFFERENT ] 1
 [ OK ] 6
-Script ./bin/global-fmt scan --dir_from=wordpress --dir_to=`pwd` --show=different,ok,missing handling the code-sniff event returned with error code 1
+Script ./bin/global-templateschecker scan --dir_from=wordpress --dir_to=`pwd` --show=different,ok,missing handling the code-sniff event returned with error code 1
 ```
 
 The report is telling us that our current folder has 1 file which differ from the template files. 

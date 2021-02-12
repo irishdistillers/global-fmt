@@ -1,9 +1,9 @@
 <?php
 
-namespace GlobalFmt\Command;
+namespace GlobalTemplateschecker\Command;
 
-use GlobalFmt\ScannerTemplates;
-use GlobalFmt\ScannerStatus;
+use GlobalTemplateschecker\ScannerTemplates;
+use GlobalTemplateschecker\ScannerStatus;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
@@ -68,8 +68,7 @@ class ScanCommand extends Command
         $files = $scanner->getFlaggedFiles();
         foreach ($files as $file) {
             if (in_array($file['status'], $onlyShowList)) {
-
-                if(isset($anomalyCounter[$file['status']])) {
+                if (isset($anomalyCounter[$file['status']])) {
                     $anomalyCounter[$file['status']]++;
                 }
 
@@ -84,7 +83,7 @@ class ScanCommand extends Command
             $anomalyCounter
         );
 
-        if($anomalyCounter[ScannerStatus::getStatusMissing()] > 0 ||
+        if ($anomalyCounter[ScannerStatus::getStatusMissing()] > 0 ||
             $anomalyCounter[ScannerStatus::getStatusDifferent()] > 0) {
             return Command::FAILURE;
         }
@@ -92,6 +91,9 @@ class ScanCommand extends Command
         return Command::SUCCESS;
     }
 
+    /**
+    * @param array<string, int> $data
+    */
     private function displayTotalResult(OutputInterface $output, array $data): void
     {
         $output->writeln(PHP_EOL);
@@ -105,10 +107,13 @@ class ScanCommand extends Command
         }
     }
 
-    private function getAnomalyCounter() 
+    /**
+    * @return array<string, int>
+    */
+    private function getAnomalyCounter(): array
     {
         $data = [];
-        foreach(ScannerStatus::getAll() as $item) {
+        foreach (ScannerStatus::getAll() as $item) {
             $data[$item] = 0;
         }
 
@@ -127,8 +132,8 @@ class ScanCommand extends Command
     }
 
     /**
-     * @return array<string>
-     */
+    * @return array<int, string>
+    */
     private function getShowStatus(string $option): array
     {
         if (!empty($option)) {

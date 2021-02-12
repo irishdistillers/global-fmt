@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace GlobalFmt;
+namespace GlobalTemplateschecker;
 
-require_once __DIR__ . '/../vendor/autoload.php';
+// require_once __DIR__ . '/../vendor/autoload.php';
 
-use GlobalFmt\ScannerStatus;
+use GlobalTemplateschecker\ScannerStatus;
 use Symfony\Component\Finder\Finder;
 
 trait TScanner
