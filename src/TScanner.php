@@ -4,8 +4,6 @@ declare(strict_types=1);
 
 namespace Templateschecker;
 
-// require_once __DIR__ . '/../vendor/autoload.php';
-
 use Templateschecker\ScannerStatus;
 use Symfony\Component\Finder\Finder;
 

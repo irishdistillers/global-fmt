@@ -3,8 +3,8 @@
 declare(strict_types=1);
 
 use PHPUnit\Framework\TestCase;
-use GlobalTemplateschecker\ScannerTemplates;
-use GlobalTemplateschecker\ScannerStatus;
+use Templateschecker\ScannerTemplates;
+use Templateschecker\ScannerStatus;
 use Symfony\Component\Finder\SplFileInfo;
 
 final class ScannerTemplatesTest extends TestCase
