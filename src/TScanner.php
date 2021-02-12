@@ -52,17 +52,20 @@ trait TScanner
     private function retrievesFlaggedFiles(): void
     {
         foreach ($this->scannedFiles as $hash => $scannedFile) {
-            $newFile = $this->dirTo . '/' . $scannedFile['file']->getFilename();
+            $newFile = $this->dirTo . '/' . $scannedFile['file']->getRelativePathname();
             $filesSimilar = $this->isSimilarFiles($newFile, $scannedFile['file']->getRealPath());
 
             if (!file_exists($newFile)) {
                 $this->flaggedFiles[$hash]['file'] = $scannedFile['file'];
+                $this->flaggedFiles[$hash]['dirto_file'] = $newFile;
                 $this->flaggedFiles[$hash]['status'] = ScannerStatus::getStatusMissing();
             } elseif ($filesSimilar !== true) {
                 $this->flaggedFiles[$hash]['file'] = $scannedFile['file'];
+                $this->flaggedFiles[$hash]['dirto_file'] = $newFile;
                 $this->flaggedFiles[$hash]['status'] = ScannerStatus::getStatusDifferent();
             } else {
                 $this->flaggedFiles[$hash]['file'] = $scannedFile['file'];
+                $this->flaggedFiles[$hash]['dirto_file'] = $newFile;
                 $this->flaggedFiles[$hash]['status'] = ScannerStatus::getStatusOk();
             }
         }

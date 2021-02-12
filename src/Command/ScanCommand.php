@@ -66,6 +66,7 @@ class ScanCommand extends Command
         $anomalyCounter = $this->getAnomalyCounter();
 
         $files = $scanner->getFlaggedFiles();
+
         foreach ($files as $file) {
             if (in_array($file['status'], $onlyShowList)) {
                 if (isset($anomalyCounter[$file['status']])) {
@@ -73,7 +74,9 @@ class ScanCommand extends Command
                 }
 
                 $display = "[ " . strtoupper($file['status']) . " ] ";
-                $display .= $file['file']->getRealPath();
+                $display .= $file['dirto_file'] . PHP_EOL;
+                $display .= "► ". $file['file']->getRealPath() . PHP_EOL;
+                $output->writeln(str_repeat("--", 40));
                 $output->writeln($display);
             }
         }
@@ -97,7 +100,7 @@ class ScanCommand extends Command
     private function displayTotalResult(OutputInterface $output, array $data): void
     {
         $output->writeln(PHP_EOL);
-        $output->writeln(str_repeat("-=", 20));
+        $output->writeln(str_repeat("=", 40));
         $output->writeln(" RESULT " . PHP_EOL);
 
         foreach ($data as $item => $content) {
@@ -105,6 +108,8 @@ class ScanCommand extends Command
             $display .= $content;
             $output->writeln($display);
         }
+
+        $output->writeln(PHP_EOL);
     }
 
     /**
