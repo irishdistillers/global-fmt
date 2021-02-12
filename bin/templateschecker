@@ -3,7 +3,7 @@
 
 require __DIR__.'/../vendor/autoload.php';
 
-use GlobalTemplateschecker\Command\ScanCommand;
+use Templateschecker\Command\ScanCommand;
 use Symfony\Component\Console\Application;
 
 $application = new Application();

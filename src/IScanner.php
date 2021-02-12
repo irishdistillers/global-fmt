@@ -1,6 +1,6 @@
 <?php
 
-namespace GlobalTemplateschecker;
+namespace Templateschecker;
 
 interface IScanner
 {

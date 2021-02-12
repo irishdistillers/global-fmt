@@ -1,14 +1,14 @@
 {
-  "name": "irishdistillers/global-templateschecker",
-  "description": " #cleanCode",
+  "name": "irishdistillers/templateschecker",
+  "description": "Manage a set of files (templates) used in multiple repositories from a single place #cleanCode",
   "type": "library",
   "license": "proprietary",
   "autoload" : {
     "psr-4": {
-      "GlobalTemplateschecker\\": "src/"
+      "Templateschecker\\": "src/"
     }
   },
-  "bin": ["bin/global-templateschecker"],
+  "bin": ["bin/templateschecker"],
   "require-dev": {
     "phpunit/phpunit": "^9.2",
     "phpstan/phpstan": "^0.12.32"

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace GlobalTemplateschecker;
+namespace Templateschecker;
 
 final class ScannerTemplates implements IScanner
 {

@@ -1,9 +1,9 @@
 <?php
 
-namespace GlobalTemplateschecker\Command;
+namespace Templateschecker\Command;
 
-use GlobalTemplateschecker\ScannerTemplates;
-use GlobalTemplateschecker\ScannerStatus;
+use Templateschecker\ScannerTemplates;
+use Templateschecker\ScannerStatus;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
