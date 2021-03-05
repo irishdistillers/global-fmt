@@ -1,0 +1,34 @@
+{
+	"env": {
+		"browser": true,
+		"es6": true,
+		"node": true
+	},
+	"extends": [
+		"eslint:recommended",
+		"airbnb-base",
+		"plugin:@wordpress/eslint-plugin/recommended"
+	],
+	"globals": {
+		"Atomics": "readonly",
+		"SharedArrayBuffer": "readonly",
+		"wp": true,
+		"jQuery": true
+	},
+	"parserOptions": {
+		"sourceType": "module",
+		"ecmaFeatures": {
+			"impliedStrict": true
+		}
+	},
+	"rules": {
+		"no-param-reassign": "off",
+		"semi": ["error", "always"],
+		"quotes": ["error", "single"],
+		"no-unused-vars": "warn",
+		"no-console": "warn",
+		"no-inner-declarations": "off",
+		"import/no-unresolved": "off",
+		"@wordpress/no-global-event-listener": "off"
+	}
+}

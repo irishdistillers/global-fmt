@@ -1,0 +1,6 @@
+{
+	"include": [
+		"./web/wp-content/themes/global-theme/assets/js/**/*",
+		"./web/wp-content/themes/global-theme/views/**/*.vue"
+	]
+}

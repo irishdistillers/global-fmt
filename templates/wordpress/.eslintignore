@@ -1,0 +1,4 @@
+/node_modules/**
+/vendor/**
+/config/**
+/web/wp-content/themes/global-theme/static/**
