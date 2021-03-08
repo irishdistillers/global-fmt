@@ -9,5 +9,6 @@ parameters:
     ignoreErrors:
         - '#Function __ invoked with 1 parameter, 0 required.#'
         - '#Function __ invoked with 2 parameters, 0 required.#'
+        - '#Constant __ not found.#'
     scanFiles:
         - %currentWorkingDirectory%/web/wp-config.php
