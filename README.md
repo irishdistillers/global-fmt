@@ -33,14 +33,9 @@ Adds the folllowing to your project composer.json
 }
 ```
 
-## Ignore a file 
-
-You can ignore system file like .DS_Store (or any other annoying files).
-To ignore a file simply add it to the {TEMPLATE_DIR}/.gitgnore 
-
 ## Report
 
-Here is how a report looks like 
+Here is how a report looks like
 
 ```bash
 > ./bin/templateschecker scan --dir_from=wordpress --dir_to=`pwd` --show=different,ok,missing
@@ -81,7 +76,7 @@ Here is how a report looks like
 
 
 ========================================
- RESULT 
+ RESULT
 
 [ MISSING ] 1
 [ DIFFERENT ] 1
@@ -91,8 +86,8 @@ Here is how a report looks like
 Script ./bin/templateschecker scan --dir_from=wordpress --dir_to=`pwd` --show=different,ok,missing handling the code-sniff event returned with error code 1
 ```
 
-The report is telling us that our current folder has 1 file which differ from the template files. 
-You should update your repo as soon possible. 
+The report is telling us that our current folder has 1 file which differ from the template files.
+You should update your repo as soon possible.
 
 ## Useful Commands
 
