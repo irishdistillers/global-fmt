@@ -40,7 +40,6 @@ trait TScanner
         $finder = new Finder();
         $finder->in($this->dirFrom)
             ->files()
-            ->ignoreVCSIgnored(true) //Ignore anything in the templates/.gitignore
             ->ignoreDotFiles(false);
 
         foreach ($finder as $file) {
